@@ -19,7 +19,7 @@ export default function App() {
 				);
 			})}
 
-			<Card colorName={'black'} index={4} width={600} />
+			<Card />
 		</>
 	);
 }
