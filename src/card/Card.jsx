@@ -1,14 +1,13 @@
 import './Card.scss';
 
-export default function Card(props) {
-	// 부모 컴포넌트에 전달되는 요소들을 props 라는 객체로 묶어서 자식 컴포넌트의 파라미터로 전달받음.
-	console.log(props);
-	// props 안에는 {colorName: '색상', index: 순서값, width: 넓이값, show: display속성값} 의 구조로 있는 것이므로, props.width, props.colorName 이런식으로 불러와서 쓰는 것임.
+export default function Card({ colorName, index, width, show }) {
+	// 만약 이전처럼 단지 props 라는 파라미터 이름으로만 객체를 통으로 전달하면, 해당 props에 전달되는 값들이 많은 경우 어떤 값이 전달되는지 파악하기가 어려움.
+	// 그러므로, props로 통째로 쓰지않고, 비구조화할당을 이용해 직접 전달하면 props.어쩌구 쓰지 않고 그냥 바로 불러서 쓸 수 있음. (일반적인 방법. 효율적임)
 	return (
-		<article className='Card' style={{ width: props.width }}>
-			<div className='bgBox' style={{ backgroundColor: props.colorName }}></div>
-			<div className='txtBox' style={{ display: props.show }}>
-				{props.index + 1} - {props.colorName}
+		<article className='Card' style={{ width: width }}>
+			<div className='bgBox' style={{ backgroundColor: colorName }}></div>
+			<div className='txtBox' style={{ display: show }}>
+				{index + 1} - {colorName}
 			</div>
 		</article>
 	);
