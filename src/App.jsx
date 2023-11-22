@@ -2,14 +2,13 @@ import Modal from './modal/Modal';
 import { useState } from 'react';
 
 export default function App() {
-	console.log('App re-rendered');
-	// useState hook은 배열을 반환함.
-	// [초기State값, 해당State 변경 전용함수]
 	const [IsOpen, setIsOpen] = useState(false);
+	const [Color, setColor] = useState('black');
 
 	return (
 		<>
-			<h1>부모 컴포넌트</h1>
+			<button onClick={() => setColor('cornflowerblue')}>제목 폰트 색상 변경</button>
+			<h1 style={{ color: Color }}>부모 컴포넌트</h1>
 			<button
 				onClick={() => {
 					setIsOpen(!IsOpen);
@@ -17,8 +16,7 @@ export default function App() {
 			>
 				{IsOpen ? '모달 닫기' : '모달 열기'}
 			</button>
-			{/* {isOpen && <Modal />} 로 더 간단히 쓸 수 있음.*/}
-			{IsOpen ? <Modal /> : null}
+			{IsOpen && <Modal />}
 		</>
 	);
 }
