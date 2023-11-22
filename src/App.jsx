@@ -1,20 +1,24 @@
 import Modal from './modal/Modal';
+import { useState } from 'react';
 
 export default function App() {
 	console.log('App re-rendered');
-	let isOpen = true;
-
-	const handleModal = () => {
-		console.log('handleModal called');
-		isOpen = false;
-	};
+	// useState hook은 배열을 반환함.
+	// [초기State값, 해당State 변경 전용함수]
+	const [IsOpen, setIsOpen] = useState(false);
 
 	return (
 		<>
 			<h1>부모 컴포넌트</h1>
-			<button onClick={handleModal}>모달 토글</button>
+			<button
+				onClick={() => {
+					setIsOpen(!IsOpen);
+				}}
+			>
+				{IsOpen ? '모달 닫기' : '모달 열기'}
+			</button>
 			{/* {isOpen && <Modal />} 로 더 간단히 쓸 수 있음.*/}
-			{isOpen ? <Modal /> : null}
+			{IsOpen ? <Modal /> : null}
 		</>
 	);
 }
