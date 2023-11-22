@@ -1,13 +1,31 @@
 import Modal from './modal/Modal';
 import { useState } from 'react';
 
+/*자주 쓰는 패턴 (정보 값을 토대로 반복되는 가상 DOM 생성)
+	1. return 안쪽에서 {} 생성
+	2. 중괄호 안쪽에서 
+		{배열state.map((반복데이터, 순서)=>{
+			return <JSX>{활용할 값}</JSX>
+		})}
+*/
+
 export default function App() {
 	const [IsOpen, setIsOpen] = useState(false);
+	// Color - 이미 생성된 돔에 이벤트 발생(클릭) 시, 해당 버튼에 있는 문자값을 가져와서 실제 h1 색상 값을 변경하기 위한 정보값
 	const [Color, setColor] = useState('black');
+	// ColorArr - 화면에 동적으로, 해당 이름으로 버튼 명을 생성하기 위한 정보값
+	const [ColorArr, setColorArr] = useState(['red', 'orange', 'yellow', 'green', 'blue']);
 
 	return (
 		<>
-			<button onClick={() => setColor('cornflowerblue')}>제목 폰트 색상 변경</button>
+			{ColorArr.map((data, idx) => {
+				return (
+					<button key={data + idx} onClick={() => setColor(data)}>
+						{data}
+					</button>
+				);
+			})}
+
 			<h1 style={{ color: Color }}>부모 컴포넌트</h1>
 			<button
 				onClick={() => {
