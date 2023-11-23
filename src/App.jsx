@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import Modal from './modal/Modal';
 
 export default function App() {
+	const [Open, setOpen] = useState(false);
+
 	return (
 		<>
 			<h1>Parent</h1>
-			<button>open</button>
-
-			<Modal />
+			<button onClick={() => setOpen(true)}>open</button>
+			{Open && <Modal setOpen={setOpen} />}
 		</>
 	);
 }
