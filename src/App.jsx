@@ -1,15 +1,16 @@
-import { useState } from 'react';
-import Modal from './modal/Modal';
-import './App.scss';
-
 export default function App() {
-	const [Open, setOpen] = useState(false);
-
-	return (
-		<>
-			<h1>Parent</h1>
-			<button onClick={() => setOpen(true)}>open</button>
-			{Open && <Modal setOpen={setOpen} />}
-		</>
-	);
+	return <></>;
 }
+
+/*
+	useState : 해당 값이 변경 되면 무조건 컴포넌트가 재렌더링됨. 컴포넌트가 unmount 되지만 않으면, 이전 렌더링 사이클에서의 값이 유지됨. 
+
+	useRef : 리액트 내부적으로 기억할 수 있는 값을 담기 위한 참조 객체를 생성해주는 함수.
+		* 쓰임 (1) : 모션을 위해서 자주 바뀌는 수치값을, 컴포넌트를 재호출하지 않으면서 관리할 때.
+		* 쓰임 (2) : 가상DOM이 아닌 realDOM 요소를 리액트 구조 안에서 선택해서 써야할 때.
+
+		[useRef의 쓰임 (1) 에 대한 해설]
+	- useRef를 통해서 생성한 참조 객체에 저장한 값은, 다른 state 변경에 의해서 컴포넌트가 재렌더링 되더라도 이전 렌더링 사이클에서의 값을 유지함. 
+	- 참조객체에 담겨있는 값을 작업자가 임의로 변경하더라도, 해당 값의 변경은 state와 달리 컴포넌트를 재렌더링 시키지 않음. 
+	- 화면의 정보를 담당하는 중요한 값이 아닌, 단지 모션을 위한 수치값 같은 중요하지 않은 값들은 참조 객체로 관리하는 것이 유리함. 
+*/
