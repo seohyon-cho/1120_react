@@ -7,11 +7,12 @@ export default function App() {
 	const refBox = useRef(null);
 
 	const minus = () => {
-		num.current = --num.current;
+		// useRef값은, state와 달리 값이 변경 될 시 다음 번 렌더링 싸이클로 넘어가는 경우가 아니기 때문에, 전위/후위에 따른 결과값 차이가 발생하지 않음.
+		num.current--;
 		console.log(num.current);
 	};
 	const plus = () => {
-		num.current = ++num.current;
+		num.current++;
 		console.log(num.current);
 	};
 
@@ -20,7 +21,7 @@ export default function App() {
 			<button onClick={minus}>left</button>
 			<button onClick={plus}>right</button>
 
-			<div ref={refBox} className='box' style={{ transform: `rotate(${num * 45}deg)` }}></div>
+			<div ref={refBox} className='box' style={{ transform: `rotate(${num.current * 45}deg)` }}></div>
 		</>
 	);
 }
