@@ -13,3 +13,12 @@
 	margin-top: -100px;
 	margin-left: -200px;
 }
+
+.mask {
+	width: 100%;
+	height: 100vh;
+	background: rgba($color: #000000, $alpha: 0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+}

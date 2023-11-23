@@ -13,9 +13,12 @@ export default function Modal({ setOpen }) {
 	}, []);
 
 	return (
-		<aside className='Modal'>
-			<button onClick={() => setOpen(false)}>close</button>
-		</aside>
+		<>
+			<aside className='mask'></aside>
+			<aside className='Modal'>
+				<button onClick={() => setOpen(false)}>close</button>
+			</aside>
+		</>
 	);
 }
 
