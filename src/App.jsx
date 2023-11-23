@@ -1,21 +1,23 @@
 import { useRef } from 'react';
 import './App.scss';
 
+/*
+	[ useRef 에서 알아야 하는 사항 핵심 정리 ]
+
+	1. DOM 참조객체에 담는 법.
+			1-1. const 변수명 = useRef(null); 	돔을 담을 빈 참조 객체 생성
+			1-2. <div ref={변수명}></div>				원하는 요소에 참조 객체 연결
+			1-3. 변수명.current.style.~					참조 객체에 담겨있는 DOM 호출 
+
+	2. 모션 작업 시 화면을 재렌더링하지 않으면서 수치 값 변경하는 방법
+			2-1. const num = useRef(초기수치);
+			2-2. num.current = 변경할 수치 값
+*/
+
 export default function App() {
 	console.log('render');
 	const num = useRef(0);
 	const refBox = useRef(null);
-
-	// const minus = () => {
-	// 	num.current--;
-	// 	console.log(num.current);
-	// 	refBox.current.style.transform = `rotate(${num.current * 45}deg)`;
-	// };
-	// const plus = () => {
-	// 	num.current++;
-	// 	console.log(num.current);
-	// 	refBox.current.style.transform = `rotate(${num.current * 45}deg)`;
-	// };
 
 	const rotation = (count) => {
 		refBox.current.style.transform = `rotate(${count * 45}deg)`;
